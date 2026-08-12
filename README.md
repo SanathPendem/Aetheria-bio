@@ -125,17 +125,3 @@ The landing page implements all 6 required core sections in a seamless, logical 
 
 ---
 
-## 🌐 Live Deployment & Submission
-
-### Deploy to Vercel
-```bash
-npx vercel
-```
-
-### Deploy to Netlify
-```bash
-npx netlify deploy --build
-```
-
-- **Public GitHub Repository**: [https://github.com/SanathPendem/aetheria-bio](https://github.com/SanathPendem/aetheria-bio)
-- **Submission Form**: https://forms.gle/h4cgxChvHhYzzKvZ8
