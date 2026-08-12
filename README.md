@@ -63,8 +63,8 @@ The landing page implements all 6 required core sections in a seamless, logical 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/SanathPendem/aetheria-bio.git
-   cd aetheria-bio
+   git clone https://github.com/SanathPendem/Aetheria-bio.git
+   cd Aetheria-bio
    ```
 
 2. **Install dependencies**:
@@ -87,6 +87,13 @@ The landing page implements all 6 required core sections in a seamless, logical 
    ```bash
    npm run preview
    ```
+
+---
+
+## 🌐 Live Deployment & Links
+
+- **Live Deployed Website (GitHub Pages)**: [https://sanathpendem.github.io/Aetheria-bio/](https://sanathpendem.github.io/Aetheria-bio/)
+- **Public GitHub Repository**: [https://github.com/SanathPendem/Aetheria-bio](https://github.com/SanathPendem/Aetheria-bio)
 
 ---
 
@@ -122,6 +129,3 @@ The landing page implements all 6 required core sections in a seamless, logical 
 ├── vite.config.ts
 └── README.md
 ```
-
----
-
