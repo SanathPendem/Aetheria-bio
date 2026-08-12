@@ -40,8 +40,8 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
       const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left - width / 2;
       const y = e.clientY - rect.top - height / 2;
-      targetRotationY = (x / width) * Math.PI * 0.45;
-      targetRotationX = (y / height) * Math.PI * 0.25;
+      targetRotationY = (x / width) * Math.PI * 0.4;
+      targetRotationX = (y / height) * Math.PI * 0.2;
     };
 
     window.addEventListener('resize', handleResize);
@@ -56,27 +56,28 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
     let time = 0;
 
     // Background floating bio particles
-    const particleCount = 40;
+    const particleCount = 35;
     const particles = Array.from({ length: particleCount }, () => ({
       x: (Math.random() - 0.5) * width * 1.2,
       y: (Math.random() - 0.5) * height * 1.2,
       size: Math.random() * 2 + 0.8,
-      speedX: (Math.random() - 0.5) * 0.35,
-      speedY: (Math.random() - 0.5) * 0.35,
-      alpha: Math.random() * 0.6 + 0.3,
+      speedX: (Math.random() - 0.5) * 0.25,
+      speedY: (Math.random() - 0.5) * 0.25,
+      alpha: Math.random() * 0.5 + 0.3,
       color: Math.random() > 0.4 ? '#00F2FE' : '#10B981',
     }));
 
     const render = () => {
-      time += 0.014 * speedMultiplier;
-      currentRotationY += (targetRotationY - currentRotationY) * 0.05;
-      currentRotationX += (targetRotationX - currentRotationX) * 0.05;
+      // Smooth continuous time rotation
+      time += 0.010 * speedMultiplier;
+      currentRotationY += (targetRotationY - currentRotationY) * 0.04;
+      currentRotationX += (targetRotationX - currentRotationX) * 0.04;
 
       ctx.clearRect(0, 0, width, height);
       const centerX = width / 2;
       const centerY = height / 2;
 
-      // Draw balanced background glow aura
+      // Radial background glow aura
       const radialGlow = ctx.createRadialGradient(
         centerX,
         centerY,
@@ -85,8 +86,8 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         centerY,
         radius * 2.4
       );
-      radialGlow.addColorStop(0, 'rgba(0, 242, 254, 0.10)');
-      radialGlow.addColorStop(0.5, 'rgba(16, 185, 129, 0.03)');
+      radialGlow.addColorStop(0, 'rgba(0, 242, 254, 0.09)');
+      radialGlow.addColorStop(0.5, 'rgba(16, 185, 129, 0.02)');
       radialGlow.addColorStop(1, 'rgba(7, 10, 17, 0)');
       ctx.fillStyle = radialGlow;
       ctx.fillRect(0, 0, width, height);
@@ -107,13 +108,13 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         ctx.beginPath();
         ctx.arc(screenX, screenY, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha * 0.5;
+        ctx.globalAlpha = p.alpha * 0.45;
         ctx.fill();
         ctx.globalAlpha = 1.0;
       });
 
-      // Render Double Helix Base Pairs
-      const nodes: Array<{
+      // Compute raw sequential 3D node coordinates
+      const rawNodes: Array<{
         x1: number;
         y1: number;
         z1: number;
@@ -134,8 +135,8 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
 
         const cosY = Math.cos(currentRotationY);
         const sinY = Math.sin(currentRotationY);
-        const cosX = Math.cos(currentRotationX + 0.15);
-        const sinX = Math.sin(currentRotationX + 0.15);
+        const cosX = Math.cos(currentRotationX + 0.12);
+        const sinX = Math.sin(currentRotationX + 0.12);
 
         const rx1 = x1 * cosY - z1 * sinY;
         const rz1 = x1 * sinY + z1 * cosY;
@@ -147,7 +148,7 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         const ry2 = rawY * cosX - rz2 * sinX;
         const finalZ2 = rawY * sinX + rz2 * cosX;
 
-        nodes.push({
+        rawNodes.push({
           x1: centerX + rx1,
           y1: centerY + ry1,
           z1: finalZ1,
@@ -158,10 +159,39 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         });
       }
 
-      // Depth sort back-to-front
-      nodes.sort((a, b) => Math.min(a.z1, a.z2) - Math.min(b.z1, b.z2));
+      // STEP 1: Render smooth continuous BACKBONE strands using sequential raw index order (NO SHAKING/JITTER)
+      ctx.beginPath();
+      for (let i = 0; i < rawNodes.length - 1; i++) {
+        const curr = rawNodes[i];
+        const next = rawNodes[i + 1];
 
-      nodes.forEach((node) => {
+        // Draw Strand 1 segment (Cyan)
+        ctx.beginPath();
+        ctx.moveTo(curr.x1, curr.y1);
+        ctx.lineTo(next.x1, next.y1);
+        const avgZ1 = (curr.z1 + next.z1) / 2;
+        const alpha1 = Math.max(0.15, Math.min(0.7, (avgZ1 + radius * 1.8) / (radius * 3.6)));
+        ctx.strokeStyle = '#00F2FE';
+        ctx.globalAlpha = alpha1 * 0.55;
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+
+        // Draw Strand 2 segment (Emerald)
+        ctx.beginPath();
+        ctx.moveTo(curr.x2, curr.y2);
+        ctx.lineTo(next.x2, next.y2);
+        const avgZ2 = (curr.z2 + next.z2) / 2;
+        const alpha2 = Math.max(0.15, Math.min(0.7, (avgZ2 + radius * 1.8) / (radius * 3.6)));
+        ctx.strokeStyle = '#10B981';
+        ctx.globalAlpha = alpha2 * 0.55;
+        ctx.lineWidth = 1.8;
+        ctx.stroke();
+      }
+
+      // STEP 2: Depth-sort base pair rungs for realistic 3D depth rendering
+      const sortedNodes = [...rawNodes].sort((a, b) => Math.min(a.z1, a.z2) - Math.min(b.z1, b.z2));
+
+      sortedNodes.forEach((node) => {
         const depthAlpha1 = Math.max(0.2, Math.min(1.0, (node.z1 + radius * 1.8) / (radius * 3.6)));
         const depthAlpha2 = Math.max(0.2, Math.min(1.0, (node.z2 + radius * 1.8) / (radius * 3.6)));
         const avgZ = (node.z1 + node.z2) / 2;
@@ -177,70 +207,48 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         ctx.moveTo(node.x1, node.y1);
         ctx.lineTo(node.x2, node.y2);
         ctx.strokeStyle = lineGradient;
-        ctx.globalAlpha = lineAlpha * 0.65;
-        ctx.lineWidth = Math.max(1, 2.2 * lineAlpha);
+        ctx.globalAlpha = lineAlpha * 0.55;
+        ctx.lineWidth = Math.max(1, 2.0 * lineAlpha);
         ctx.stroke();
 
-        // --- Perfectly Balanced Glowing Nucleotide Node 1 ---
-        const r1 = Math.max(2.2, 4.2 * depthAlpha1);
+        // --- Glowing Nucleotide Node 1 ---
+        const r1 = Math.max(2.2, 4.0 * depthAlpha1);
         ctx.beginPath();
         ctx.arc(node.x1, node.y1, r1, 0, Math.PI * 2);
         ctx.fillStyle = colorPair[0];
         ctx.globalAlpha = depthAlpha1 * 0.9;
         ctx.shadowColor = colorPair[0];
-        ctx.shadowBlur = 8 * depthAlpha1; // Balanced soft glow
+        ctx.shadowBlur = 6 * depthAlpha1;
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Inner Crystalline Core Spot for Node 1
+        // Inner Crystalline Spot Node 1
         ctx.beginPath();
         ctx.arc(node.x1, node.y1, r1 * 0.4, 0, Math.PI * 2);
         ctx.fillStyle = '#FFFFFF';
-        ctx.globalAlpha = depthAlpha1 * 0.8;
+        ctx.globalAlpha = depthAlpha1 * 0.75;
         ctx.fill();
 
-        // --- Perfectly Balanced Glowing Nucleotide Node 2 ---
-        const r2 = Math.max(2.2, 4.2 * depthAlpha2);
+        // --- Glowing Nucleotide Node 2 ---
+        const r2 = Math.max(2.2, 4.0 * depthAlpha2);
         ctx.beginPath();
         ctx.arc(node.x2, node.y2, r2, 0, Math.PI * 2);
         ctx.fillStyle = colorPair[1];
         ctx.globalAlpha = depthAlpha2 * 0.9;
         ctx.shadowColor = colorPair[1];
-        ctx.shadowBlur = 8 * depthAlpha2; // Balanced soft glow
+        ctx.shadowBlur = 6 * depthAlpha2;
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Inner Crystalline Core Spot for Node 2
+        // Inner Crystalline Spot Node 2
         ctx.beginPath();
         ctx.arc(node.x2, node.y2, r2 * 0.4, 0, Math.PI * 2);
         ctx.fillStyle = '#FFFFFF';
-        ctx.globalAlpha = depthAlpha2 * 0.8;
+        ctx.globalAlpha = depthAlpha2 * 0.75;
         ctx.fill();
 
         ctx.globalAlpha = 1.0;
       });
-
-      // Connect adjacent backbone nodes
-      for (let i = 0; i < nodes.length - 1; i++) {
-        const curr = nodes[i];
-        const next = nodes[i + 1];
-
-        ctx.beginPath();
-        ctx.moveTo(curr.x1, curr.y1);
-        ctx.lineTo(next.x1, next.y1);
-        ctx.strokeStyle = '#00F2FE';
-        ctx.globalAlpha = 0.3;
-        ctx.lineWidth = 1.4;
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(curr.x2, curr.y2);
-        ctx.lineTo(next.x2, next.y2);
-        ctx.strokeStyle = '#10B981';
-        ctx.globalAlpha = 0.3;
-        ctx.lineWidth = 1.4;
-        ctx.stroke();
-      }
 
       animationFrameId = requestAnimationFrame(render);
     };
