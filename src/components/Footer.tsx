@@ -67,9 +67,9 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li><a href="#impact" className="hover:text-cyan-400 transition-colors">Research Hubs</a></li>
               <li><a href="#contact" className="hover:text-cyan-400 transition-colors">Investor Relations</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors">Regulatory Compliance</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors">Regulatory Compliance</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
             </ul>
           </div>
 
@@ -82,11 +82,11 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-4 text-slate-400">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1" aria-label="GitHub Repository">
-              <Globe className="w-4 h-4" /> Global Portal
+            <a href="https://github.com/SanathPendem/aetheria-bio" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1" aria-label="GitHub Repository">
+              <Globe className="w-4 h-4" /> Repository
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1" aria-label="LinkedIn Profile">
-              <Share2 className="w-4 h-4" /> Network
+            <a href="#contact" className="hover:text-cyan-400 transition-colors flex items-center gap-1" aria-label="Contact Network">
+              <Share2 className="w-4 h-4" /> Contact Us
             </a>
             <button
               onClick={scrollToTop}

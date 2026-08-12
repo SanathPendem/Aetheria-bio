@@ -63,7 +63,7 @@ The landing page implements all 6 required core sections in a seamless, logical 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/aetheria-bio.git
+   git clone https://github.com/SanathPendem/aetheria-bio.git
    cd aetheria-bio
    ```
 
