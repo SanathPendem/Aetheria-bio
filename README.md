@@ -137,5 +137,5 @@ npx vercel
 npx netlify deploy --build
 ```
 
-- **Live Demo URL**: Accessible via Vercel / Netlify deployment link
+- **Public GitHub Repository**: [https://github.com/SanathPendem/aetheria-bio](https://github.com/SanathPendem/aetheria-bio)
 - **Submission Form**: https://forms.gle/h4cgxChvHhYzzKvZ8
