@@ -56,14 +56,14 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
     let time = 0;
 
     // Background floating bio particles
-    const particleCount = 35;
+    const particleCount = 30;
     const particles = Array.from({ length: particleCount }, () => ({
       x: (Math.random() - 0.5) * width * 1.2,
       y: (Math.random() - 0.5) * height * 1.2,
-      size: Math.random() * 2 + 0.8,
-      speedX: (Math.random() - 0.5) * 0.25,
-      speedY: (Math.random() - 0.5) * 0.25,
-      alpha: Math.random() * 0.5 + 0.3,
+      size: Math.random() * 1.8 + 0.6,
+      speedX: (Math.random() - 0.5) * 0.2,
+      speedY: (Math.random() - 0.5) * 0.2,
+      alpha: Math.random() * 0.4 + 0.2,
       color: Math.random() > 0.4 ? '#00F2FE' : '#10B981',
     }));
 
@@ -77,17 +77,17 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
       const centerX = width / 2;
       const centerY = height / 2;
 
-      // Radial background glow aura
+      // Subtle background radial glow aura
       const radialGlow = ctx.createRadialGradient(
         centerX,
         centerY,
         10,
         centerX,
         centerY,
-        radius * 2.4
+        radius * 2.2
       );
-      radialGlow.addColorStop(0, 'rgba(0, 242, 254, 0.09)');
-      radialGlow.addColorStop(0.5, 'rgba(16, 185, 129, 0.02)');
+      radialGlow.addColorStop(0, 'rgba(0, 242, 254, 0.05)');
+      radialGlow.addColorStop(0.5, 'rgba(16, 185, 129, 0.01)');
       radialGlow.addColorStop(1, 'rgba(7, 10, 17, 0)');
       ctx.fillStyle = radialGlow;
       ctx.fillRect(0, 0, width, height);
@@ -108,7 +108,7 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         ctx.beginPath();
         ctx.arc(screenX, screenY, p.size, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha * 0.45;
+        ctx.globalAlpha = p.alpha * 0.35;
         ctx.fill();
         ctx.globalAlpha = 1.0;
       });
@@ -159,45 +159,45 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         });
       }
 
-      // STEP 1: Render smooth continuous BACKBONE strands using sequential raw index order (NO SHAKING/JITTER)
+      // STEP 1: Render smooth BACKBONE strands with minimal subtle line opacities
       ctx.beginPath();
       for (let i = 0; i < rawNodes.length - 1; i++) {
         const curr = rawNodes[i];
         const next = rawNodes[i + 1];
 
-        // Draw Strand 1 segment (Cyan)
+        // Draw Strand 1 segment (Cyan) - Very subtle line opacity
         ctx.beginPath();
         ctx.moveTo(curr.x1, curr.y1);
         ctx.lineTo(next.x1, next.y1);
         const avgZ1 = (curr.z1 + next.z1) / 2;
-        const alpha1 = Math.max(0.15, Math.min(0.7, (avgZ1 + radius * 1.8) / (radius * 3.6)));
+        const alpha1 = Math.max(0.12, Math.min(0.6, (avgZ1 + radius * 1.8) / (radius * 3.6)));
         ctx.strokeStyle = '#00F2FE';
-        ctx.globalAlpha = alpha1 * 0.55;
-        ctx.lineWidth = 1.8;
+        ctx.globalAlpha = alpha1 * 0.35; // Minimal line glow
+        ctx.lineWidth = 1.2;
         ctx.stroke();
 
-        // Draw Strand 2 segment (Emerald)
+        // Draw Strand 2 segment (Emerald) - Very subtle line opacity
         ctx.beginPath();
         ctx.moveTo(curr.x2, curr.y2);
         ctx.lineTo(next.x2, next.y2);
         const avgZ2 = (curr.z2 + next.z2) / 2;
-        const alpha2 = Math.max(0.15, Math.min(0.7, (avgZ2 + radius * 1.8) / (radius * 3.6)));
+        const alpha2 = Math.max(0.12, Math.min(0.6, (avgZ2 + radius * 1.8) / (radius * 3.6)));
         ctx.strokeStyle = '#10B981';
-        ctx.globalAlpha = alpha2 * 0.55;
-        ctx.lineWidth = 1.8;
+        ctx.globalAlpha = alpha2 * 0.35; // Minimal line glow
+        ctx.lineWidth = 1.2;
         ctx.stroke();
       }
 
-      // STEP 2: Depth-sort base pair rungs for realistic 3D depth rendering
+      // STEP 2: Depth-sort base pair rungs with subtle line opacities
       const sortedNodes = [...rawNodes].sort((a, b) => Math.min(a.z1, a.z2) - Math.min(b.z1, b.z2));
 
       sortedNodes.forEach((node) => {
-        const depthAlpha1 = Math.max(0.2, Math.min(1.0, (node.z1 + radius * 1.8) / (radius * 3.6)));
-        const depthAlpha2 = Math.max(0.2, Math.min(1.0, (node.z2 + radius * 1.8) / (radius * 3.6)));
+        const depthAlpha1 = Math.max(0.18, Math.min(1.0, (node.z1 + radius * 1.8) / (radius * 3.6)));
+        const depthAlpha2 = Math.max(0.18, Math.min(1.0, (node.z2 + radius * 1.8) / (radius * 3.6)));
         const avgZ = (node.z1 + node.z2) / 2;
-        const lineAlpha = Math.max(0.15, Math.min(1.0, (avgZ + radius * 1.8) / (radius * 3.6)));
+        const lineAlpha = Math.max(0.12, Math.min(1.0, (avgZ + radius * 1.8) / (radius * 3.6)));
 
-        // Base Pair Hydrogen Connection Line
+        // Base Pair Connection Line - Subtle & sleek stroke
         const lineGradient = ctx.createLinearGradient(node.x1, node.y1, node.x2, node.y2);
         const colorPair = node.index % 2 === 0 ? ['#00F2FE', '#4FACFE'] : ['#10B981', '#06B6D4'];
         lineGradient.addColorStop(0, colorPair[0]);
@@ -207,44 +207,44 @@ export const InteractiveHelixCanvas: React.FC<HelixCanvasProps> = ({
         ctx.moveTo(node.x1, node.y1);
         ctx.lineTo(node.x2, node.y2);
         ctx.strokeStyle = lineGradient;
-        ctx.globalAlpha = lineAlpha * 0.55;
-        ctx.lineWidth = Math.max(1, 2.0 * lineAlpha);
+        ctx.globalAlpha = lineAlpha * 0.35; // Very subtle line opacity
+        ctx.lineWidth = Math.max(0.8, 1.2 * lineAlpha);
         ctx.stroke();
 
-        // --- Glowing Nucleotide Node 1 ---
-        const r1 = Math.max(2.2, 4.0 * depthAlpha1);
+        // --- Refined Nucleotide Node 1 ---
+        const r1 = Math.max(2.0, 3.8 * depthAlpha1);
         ctx.beginPath();
         ctx.arc(node.x1, node.y1, r1, 0, Math.PI * 2);
         ctx.fillStyle = colorPair[0];
-        ctx.globalAlpha = depthAlpha1 * 0.9;
+        ctx.globalAlpha = depthAlpha1 * 0.85;
         ctx.shadowColor = colorPair[0];
-        ctx.shadowBlur = 6 * depthAlpha1;
+        ctx.shadowBlur = 3 * depthAlpha1; // Very subtle node glow
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Inner Crystalline Spot Node 1
+        // Inner Core Spot Node 1
         ctx.beginPath();
-        ctx.arc(node.x1, node.y1, r1 * 0.4, 0, Math.PI * 2);
+        ctx.arc(node.x1, node.y1, r1 * 0.35, 0, Math.PI * 2);
         ctx.fillStyle = '#FFFFFF';
-        ctx.globalAlpha = depthAlpha1 * 0.75;
+        ctx.globalAlpha = depthAlpha1 * 0.7;
         ctx.fill();
 
-        // --- Glowing Nucleotide Node 2 ---
-        const r2 = Math.max(2.2, 4.0 * depthAlpha2);
+        // --- Refined Nucleotide Node 2 ---
+        const r2 = Math.max(2.0, 3.8 * depthAlpha2);
         ctx.beginPath();
         ctx.arc(node.x2, node.y2, r2, 0, Math.PI * 2);
         ctx.fillStyle = colorPair[1];
-        ctx.globalAlpha = depthAlpha2 * 0.9;
+        ctx.globalAlpha = depthAlpha2 * 0.85;
         ctx.shadowColor = colorPair[1];
-        ctx.shadowBlur = 6 * depthAlpha2;
+        ctx.shadowBlur = 3 * depthAlpha2; // Very subtle node glow
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Inner Crystalline Spot Node 2
+        // Inner Core Spot Node 2
         ctx.beginPath();
-        ctx.arc(node.x2, node.y2, r2 * 0.4, 0, Math.PI * 2);
+        ctx.arc(node.x2, node.y2, r2 * 0.35, 0, Math.PI * 2);
         ctx.fillStyle = '#FFFFFF';
-        ctx.globalAlpha = depthAlpha2 * 0.75;
+        ctx.globalAlpha = depthAlpha2 * 0.7;
         ctx.fill();
 
         ctx.globalAlpha = 1.0;
