@@ -47,9 +47,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPartnerModal }) => {
   ];
 
   const themes: { id: ThemeMode; label: string; icon: string }[] = [
+    { id: 'zajno', label: 'Zajno Acid Lime', icon: '⚡' },
     { id: 'quantum', label: 'Quantum Obsidian', icon: '🧬' },
     { id: 'aurora', label: 'Aurora Emerald', icon: '🧪' },
-    { id: 'infrared', label: 'Hyper Infrared', icon: '⚡' },
+    { id: 'infrared', label: 'Hyper Infrared', icon: '🔥' },
   ];
 
   return (

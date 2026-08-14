@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ThemeMode = 'quantum' | 'aurora' | 'infrared';
+export type ThemeMode = 'zajno' | 'quantum' | 'aurora' | 'infrared';
 
 interface ThemeContextType {
   theme: ThemeMode;
@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setThemeState] = useState<ThemeMode>(() => {
     const saved = localStorage.getItem('aetheria-theme') as ThemeMode;
-    return saved && ['quantum', 'aurora', 'infrared'].includes(saved) ? saved : 'quantum';
+    return saved && ['zajno', 'quantum', 'aurora', 'infrared'].includes(saved) ? saved : 'zajno';
   });
 
   const setTheme = (newTheme: ThemeMode) => {
