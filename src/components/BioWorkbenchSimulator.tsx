@@ -72,37 +72,37 @@ export const BioWorkbenchSimulator: React.FC = () => {
   };
 
   return (
-    <div className="rounded-3xl glass-panel border border-[var(--primary-color)]/30 p-6 lg:p-8 shadow-2xl space-y-8 hud-corner-box">
+    <div className="rounded-[32px] glass-panel p-6 lg:p-8 shadow-xl space-y-8 border border-slate-200">
       {/* Workbench Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-[var(--border-color)] pb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <Sliders className="w-5 h-5 text-[var(--primary-color)]" />
-            <h3 className="font-outfit text-2xl font-bold text-white">Interactive Bio-Workbench & In-Silico Docking Engine</h3>
+            <Sliders className="w-5 h-5 text-blue-600" />
+            <h3 className="font-outfit text-2xl font-extrabold text-slate-950">Interactive Bio-Workbench & Docking Engine</h3>
           </div>
-          <p className="text-slate-300 text-sm mt-1">
+          <p className="text-slate-600 text-sm mt-1">
             Real-time biophysical telemetry simulating binding free energy (ΔG), cell-surface tropism, and organoid clearance.
           </p>
         </div>
 
         {/* Presets */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-xs font-mono text-slate-400 mr-1">PRESETS:</span>
+          <span className="text-xs font-mono text-slate-500 mr-1">PRESETS:</span>
           <button
             onClick={() => handlePreset('oncology')}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-[var(--primary-color)]/40 text-[var(--badge-text)] text-xs font-mono hover:bg-[var(--primary-color)]/20"
+            className="px-3.5 py-1.5 rounded-full bg-slate-950 text-white text-xs font-mono font-bold hover:bg-slate-800"
           >
             Onco-Lead
           </button>
           <button
             onClick={() => handlePreset('cns')}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-purple-500/40 text-purple-300 text-xs font-mono hover:bg-purple-900/40"
+            className="px-3.5 py-1.5 rounded-full bg-slate-150 border border-slate-300 text-slate-900 text-xs font-mono font-bold hover:bg-slate-200"
           >
             Neuro-Lead
           </button>
           <button
             onClick={() => handlePreset('cardio')}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-pink-500/40 text-pink-300 text-xs font-mono hover:bg-pink-900/40"
+            className="px-3.5 py-1.5 rounded-full bg-slate-150 border border-slate-300 text-slate-900 text-xs font-mono font-bold hover:bg-slate-200"
           >
             Cardio-Lead
           </button>
@@ -115,9 +115,9 @@ export const BioWorkbenchSimulator: React.FC = () => {
           
           {/* Target Disease Selector */}
           <div className="space-y-2">
-            <label className="text-xs font-mono uppercase text-slate-400 flex items-center justify-between">
+            <label className="text-xs font-mono uppercase text-slate-500 flex items-center justify-between">
               <span>Target Therapeutic Indication</span>
-              <span className="text-[var(--primary-color)] font-bold">{params.targetDisease}</span>
+              <span className="text-blue-600 font-bold">{params.targetDisease}</span>
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {(['Oncology', 'Neurodegeneration', 'Cardiovascular', 'Rare Genetic'] as const).map((disease) => (
@@ -126,8 +126,8 @@ export const BioWorkbenchSimulator: React.FC = () => {
                   onClick={() => setParams((prev) => ({ ...prev, targetDisease: disease }))}
                   className={`py-2 px-2 text-center rounded-xl text-xs font-medium transition-all border ${
                     params.targetDisease === disease
-                      ? 'bg-[var(--primary-color)]/20 border-[var(--primary-color)] text-white shadow-md'
-                      : 'bg-slate-900 border-white/10 text-slate-400 hover:text-white'
+                      ? 'bg-slate-950 border-slate-950 text-white shadow-md font-bold'
+                      : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
                   }`}
                 >
                   {disease}
@@ -139,8 +139,8 @@ export const BioWorkbenchSimulator: React.FC = () => {
           {/* Slider 1: Binding Affinity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-slate-300">Target Binding Affinity (Kd Score)</span>
-              <span className="text-[var(--primary-color)] font-bold">{params.bindingAffinity}% (0.12 nM)</span>
+              <span className="text-slate-700">Target Binding Affinity (Kd Score)</span>
+              <span className="text-blue-600 font-bold">{params.bindingAffinity}% (0.12 nM)</span>
             </div>
             <input
               type="range"
@@ -148,15 +148,15 @@ export const BioWorkbenchSimulator: React.FC = () => {
               max="99"
               value={params.bindingAffinity}
               onChange={(e) => setParams((prev) => ({ ...prev, bindingAffinity: Number(e.target.value) }))}
-              className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[var(--primary-color)]"
+              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
             />
           </div>
 
           {/* Slider 2: Cellular Tropism */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-slate-300">Organ Cell Tropism / Homing</span>
-              <span className="text-[var(--secondary-color)] font-bold">{params.cellularTropism}% Specificity</span>
+              <span className="text-slate-700">Organ Cell Tropism / Homing</span>
+              <span className="text-emerald-600 font-bold">{params.cellularTropism}% Specificity</span>
             </div>
             <input
               type="range"
@@ -164,15 +164,15 @@ export const BioWorkbenchSimulator: React.FC = () => {
               max="99"
               value={params.cellularTropism}
               onChange={(e) => setParams((prev) => ({ ...prev, cellularTropism: Number(e.target.value) }))}
-              className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[var(--secondary-color)]"
+              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
             />
           </div>
 
           {/* Slider 3: In Vivo Half Life */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-slate-300">In-Vivo Expression Half-Life</span>
-              <span className="text-[var(--accent-color)] font-bold">{params.halfLifeDays} Days</span>
+              <span className="text-slate-700">In-Vivo Expression Half-Life</span>
+              <span className="text-purple-600 font-bold">{params.halfLifeDays} Days</span>
             </div>
             <input
               type="range"
@@ -180,15 +180,15 @@ export const BioWorkbenchSimulator: React.FC = () => {
               max="30"
               value={params.halfLifeDays}
               onChange={(e) => setParams((prev) => ({ ...prev, halfLifeDays: Number(e.target.value) }))}
-              className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[var(--accent-color)]"
+              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600"
             />
           </div>
 
           {/* Slider 4: Nanoparticle Zeta Potential Charge */}
           <div className="space-y-2">
             <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-slate-300">LNP Surface Zeta Potential</span>
-              <span className="text-[var(--badge-text)] font-bold">{params.nanoparticleCharge > 0 ? `+${params.nanoparticleCharge}` : params.nanoparticleCharge} mV</span>
+              <span className="text-slate-700">LNP Surface Zeta Potential</span>
+              <span className="text-pink-600 font-bold">{params.nanoparticleCharge > 0 ? `+${params.nanoparticleCharge}` : params.nanoparticleCharge} mV</span>
             </div>
             <input
               type="range"
@@ -196,27 +196,27 @@ export const BioWorkbenchSimulator: React.FC = () => {
               max="40"
               value={params.nanoparticleCharge}
               onChange={(e) => setParams((prev) => ({ ...prev, nanoparticleCharge: Number(e.target.value) }))}
-              className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-[var(--badge-text)]"
+              className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-pink-600"
             />
           </div>
 
         </div>
 
-        {/* Right Column: Dynamic 3D Protein Canvas & Real-time Output Calculations */}
+        {/* Right Column: Dynamic 3D Protein Canvas & Pitch Black Metric Output Calculations */}
         <div className="lg:col-span-6 space-y-6">
           {/* Canvas Render Box */}
-          <div className="relative w-full h-[280px] sm:h-[320px] rounded-2xl bg-slate-950/90 border border-[var(--primary-color)]/30 overflow-hidden shadow-inner">
+          <div className="relative w-full h-[280px] sm:h-[320px] rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-inner">
             <ProteinStructureCanvas params={params} className="w-full h-full" />
 
             {/* Status Floating Pill */}
             <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 border shadow-lg backdrop-blur-md">
               {simulationResult.status === 'OPTIMAL' ? (
-                <div className="flex items-center gap-1.5 text-emerald-400 bg-emerald-950/80 border-emerald-500/40 px-2.5 py-0.5 rounded-full">
+                <div className="flex items-center gap-1.5 text-emerald-400 bg-emerald-950/80 border-emerald-500/40 px-3 py-0.5 rounded-full">
                   <CheckCircle className="w-3.5 h-3.5" />
                   <span>OPTIMAL CANDIDATE</span>
                 </div>
               ) : (
-                <div className="flex items-center gap-1.5 text-amber-400 bg-amber-950/80 border-amber-500/40 px-2.5 py-0.5 rounded-full">
+                <div className="flex items-center gap-1.5 text-amber-400 bg-amber-950/80 border-amber-500/40 px-3 py-0.5 rounded-full">
                   <AlertTriangle className="w-3.5 h-3.5" />
                   <span>MODERATE SPECIFICITY</span>
                 </div>
@@ -224,32 +224,32 @@ export const BioWorkbenchSimulator: React.FC = () => {
             </div>
           </div>
 
-          {/* Real-time Calculation Data Grid */}
+          {/* Real-time Calculation Dark Bento Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left">
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10">
+            <div className="p-3.5 rounded-2xl bg-slate-950 text-white border border-slate-800">
               <span className="text-[10px] font-mono text-slate-400 uppercase">Efficacy Score</span>
-              <div className="font-outfit text-xl font-extrabold text-[var(--primary-color)] mt-1">
+              <div className="font-outfit text-xl font-extrabold text-cyan-400 mt-1">
                 {simulationResult.efficacyScore}%
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10">
+            <div className="p-3.5 rounded-2xl bg-slate-950 text-white border border-slate-800">
               <span className="text-[10px] font-mono text-slate-400 uppercase">Off-Target Risk</span>
-              <div className="font-outfit text-xl font-extrabold text-[var(--secondary-color)] mt-1">
+              <div className="font-outfit text-xl font-extrabold text-emerald-400 mt-1">
                 {simulationResult.offTargetRisk}%
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10">
+            <div className="p-3.5 rounded-2xl bg-slate-950 text-white border border-slate-800">
               <span className="text-[10px] font-mono text-slate-400 uppercase">Bioavailability</span>
-              <div className="font-outfit text-xl font-extrabold text-[var(--accent-color)] mt-1">
+              <div className="font-outfit text-xl font-extrabold text-purple-400 mt-1">
                 {simulationResult.bioAvailability}%
               </div>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10">
+            <div className="p-3.5 rounded-2xl bg-slate-950 text-white border border-slate-800">
               <span className="text-[10px] font-mono text-slate-400 uppercase">Surv. Increase</span>
-              <div className="font-outfit text-sm font-bold text-[var(--badge-text)] mt-1 leading-tight">
+              <div className="font-outfit text-xs font-bold text-pink-400 mt-1 leading-tight">
                 {simulationResult.predictedSurvivalIncrease}
               </div>
             </div>

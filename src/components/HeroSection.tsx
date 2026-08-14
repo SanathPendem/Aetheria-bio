@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Dna, Activity, Play } from 'lucide-react';
+import { ArrowRight, Play, TrendingUp, Sparkles, CheckCircle2, Clock } from 'lucide-react';
 import { InteractiveHelixCanvas } from './canvas/InteractiveHelixCanvas';
 
 interface HeroSectionProps {
@@ -8,101 +8,170 @@ interface HeroSectionProps {
   onOpenWhitepaperModal: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = () => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPartnerModal }) => {
   return (
-    <section id="hero" className="relative min-h-screen pt-28 pb-16 lg:pt-36 lg:pb-24 flex items-center overflow-hidden bio-grid-pattern">
-      {/* Bioluminescent Background Aura */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[var(--primary-color)]/10 rounded-full blur-[140px] pointer-events-none transition-colors duration-500" />
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-[var(--secondary-color)]/10 rounded-full blur-[130px] pointer-events-none transition-colors duration-500" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Hero Text & CTA Content */}
+    <section id="hero" className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bio-grid-pattern">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+        
+        {/* Top Hero Text Header & Tagline */}
+        <div className="text-center max-w-4xl mx-auto space-y-6">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="lg:col-span-7 space-y-6 text-center lg:text-left"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/70 border border-slate-300 text-slate-900 text-xs font-semibold uppercase tracking-wider backdrop-blur-md"
           >
-            {/* Tagline */}
-            <div className="inline-flex items-center gap-2.5 text-[var(--primary-color)] text-xs sm:text-sm font-mono tracking-widest uppercase">
-              <Sparkles className="w-4 h-4 text-[var(--primary-color)] animate-pulse" />
-              <span>AI-Driven Cellular Engineering & Quantum Docking</span>
+            <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-pulse" />
+            <span>AI-Driven Cellular Engineering & Quantum Docking</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="font-outfit text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[var(--text-main)] leading-[1.08]"
+          >
+            Synthesizing the Future of{' '}
+            <span className="text-gradient-cyan">Cellular Therapeutics</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-[var(--text-muted)] text-base sm:text-xl font-normal leading-relaxed max-w-3xl mx-auto"
+          >
+            Beyond traditional gene therapy: Aetheria Bio leverages quantum-accelerated protein design and organ-targeted mRNA lipid nanoparticles to engineer curative, cell-precise modalities.
+          </motion.p>
+
+          {/* Action Pill Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
+          >
+            <button
+              onClick={onOpenPartnerModal}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-slate-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition-all shadow-lg active:scale-95 flex items-center justify-center gap-2 group"
+            >
+              Start Now
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            <button
+              onClick={onOpenPartnerModal}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-slate-900 text-slate-900 font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-all flex items-center justify-center gap-2"
+            >
+              Contact Advisory Board
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Hero Modern Rounded Bento Grid (Matching User Screenshot Layout) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch"
+        >
+          {/* Left Column: 2 Pitch-Black Metric Bento Cards */}
+          <div className="md:col-span-4 flex flex-col gap-5 justify-between">
+            
+            {/* Top Left Dark Bento Card (320+ Bio-assets analyzed) */}
+            <div className="bento-card-dark p-6 flex flex-col justify-between h-[200px] relative overflow-hidden group">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="font-outfit text-4xl sm:text-5xl font-extrabold text-white flex items-center gap-1">
+                    <span>320+</span>
+                    <TrendingUp className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <span className="text-xs text-slate-400 font-medium block mt-1">
+                    Bio-assets analyzed & mapped
+                  </span>
+                </div>
+                <div className="p-2.5 rounded-full bg-slate-800/80 text-blue-400 border border-slate-700">
+                  <Sparkles className="w-5 h-5" />
+                </div>
+              </div>
+
+              {/* Sparkline Visual Simulation */}
+              <div className="w-full h-8 flex items-end gap-1.5 pt-2">
+                {[40, 65, 55, 80, 70, 95, 85, 100].map((h, idx) => (
+                  <div
+                    key={idx}
+                    className="flex-1 bg-gradient-to-t from-blue-600 to-cyan-400 rounded-t-sm transition-all duration-300 group-hover:brightness-125"
+                    style={{ height: `${h}%` }}
+                  />
+                ))}
+              </div>
             </div>
 
-            {/* Main Visionary Headline */}
-            <h1 className="font-outfit text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
-              Synthesizing the Future of{' '}
-              <span className="text-gradient-cyan">Cellular Therapeutics</span>
-            </h1>
+            {/* Bottom Left Dark Bento Card (12+ Biotech solutions available) */}
+            <div className="bento-card-dark p-6 flex items-center justify-between h-[150px] relative overflow-hidden group">
+              <div className="space-y-1">
+                <div className="font-outfit text-3xl sm:text-4xl font-extrabold text-white">
+                  12+
+                </div>
+                <span className="text-xs text-slate-400 font-medium block max-w-[180px]">
+                  Biotech solutions & pipeline assets available
+                </span>
+              </div>
 
-            {/* Subtitle */}
-            <p className="text-slate-300 text-base sm:text-xl font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Beyond traditional gene therapy: Aetheria Bio leverages quantum-accelerated protein design and organ-targeted mRNA lipid nanoparticles to engineer curative, cell-precise modalities for previously undruggable genomes.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
               <a
                 href="#pipeline"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-slate-950 font-extrabold text-xs uppercase tracking-widest hover:shadow-xl hover:shadow-[var(--glow-primary)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 group"
+                className="w-12 h-12 rounded-full bg-slate-800 hover:bg-blue-600 text-white flex items-center justify-center transition-all shadow-md group-hover:scale-110 shrink-0"
               >
-                Explore Drug Pipeline
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5" />
               </a>
+            </div>
 
+          </div>
+
+          {/* Middle Bento Card: Video & Insights Preview (Watch Video - 4m 36s) */}
+          <div className="md:col-span-3 bento-card-light p-5 flex flex-col justify-between h-[370px] relative overflow-hidden group border border-slate-200">
+            {/* Top Pill Badge */}
+            <div className="flex items-center justify-between z-10">
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-mono">
+                <Clock className="w-3 h-3 text-cyan-400" />
+                4m 36s
+              </span>
+              <span className="text-[11px] font-mono text-slate-500 font-bold uppercase">PREVIEW</span>
+            </div>
+
+            {/* Middle Play Action Sphere */}
+            <div className="my-auto text-center space-y-3 z-10">
               <a
                 href="#technology"
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-950/80 border border-[var(--border-color)] text-slate-200 hover:text-white hover:border-[var(--primary-color)] hover:bg-slate-900/90 transition-all flex items-center justify-center gap-2.5 backdrop-blur-md group text-xs font-mono tracking-wider uppercase"
+                className="w-16 h-16 rounded-full bg-slate-950 text-white border-4 border-white shadow-xl flex items-center justify-center mx-auto hover:scale-110 transition-transform group"
               >
-                <Play className="w-4 h-4 text-[var(--primary-color)] group-hover:scale-110 transition-transform fill-[var(--primary-color)]/20" />
-                Launch Bio-Workbench
+                <Play className="w-7 h-7 text-cyan-400 fill-cyan-400 ml-1" />
               </a>
-            </div>
-
-            {/* Key Trust & Validation Badges */}
-            <div className="pt-6 border-t border-[var(--border-color)] grid grid-cols-3 gap-4 max-w-xl mx-auto lg:mx-0 text-left">
-              <div className="p-3 rounded-xl bg-slate-950/60 border border-[var(--border-color)]">
-                <div className="font-outfit text-2xl lg:text-3xl font-extrabold text-[var(--primary-color)]">99.98%</div>
-                <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider mt-0.5">Sub-Cellular Precision</div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-950/60 border border-[var(--border-color)]">
-                <div className="font-outfit text-2xl lg:text-3xl font-extrabold text-[var(--secondary-color)]">0.45 Å</div>
-                <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider mt-0.5">Atomic Resolution</div>
-              </div>
-              <div className="p-3 rounded-xl bg-slate-950/60 border border-[var(--border-color)]">
-                <div className="font-outfit text-2xl lg:text-3xl font-extrabold text-[var(--accent-color)]">Phase II</div>
-                <div className="text-[10px] text-slate-400 font-mono uppercase tracking-wider mt-0.5">Lead mRNA Program</div>
+              <div>
+                <h4 className="font-outfit text-base font-bold text-slate-950">Watch video</h4>
+                <p className="text-xs text-slate-500 font-medium">Watch Biotech Insights & Simulator</p>
               </div>
             </div>
-          </motion.div>
 
-          {/* Right Interactive Visual - 3D DNA Canvas Helix */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="lg:col-span-5 relative"
-          >
-            <div className="relative w-full h-[460px] lg:h-[560px] rounded-3xl glass-panel border border-[var(--primary-color)]/40 overflow-hidden shadow-2xl hud-corner-box">
-              {/* Top Floating Badge */}
-              <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-950/90 border border-[var(--border-color)] text-xs font-mono text-[var(--badge-text)] backdrop-blur-md shadow-lg">
-                <Dna className="w-4 h-4 text-[var(--primary-color)] animate-spin-slow" />
-                <span>3D Atomic Helix Renderer v4.2</span>
+            {/* Ambient Graphic Background */}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-200/80 via-transparent to-transparent pointer-events-none" />
+          </div>
+
+          {/* Right Column: 3D Microscopic Visual Bento Frame (Matching Reference Screenshot Visual) */}
+          <div className="md:col-span-5 bento-card-dark p-2 h-[370px] relative overflow-hidden shadow-2xl group border border-slate-800">
+            <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-slate-950">
+              {/* Floating Status Pill */}
+              <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-mono text-white backdrop-blur-md">
+                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+                <span>3D Microscopic Cell Visualizer</span>
               </div>
 
-              <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-950/90 border border-[var(--border-color)] text-[11px] font-mono text-slate-300 backdrop-blur-md">
-                <Activity className="w-3.5 h-3.5 text-[var(--primary-color)]" />
-                <span>Drag cursor to orbit molecular geometry</span>
-              </div>
-
-              {/* 3D Canvas Helix */}
-              <InteractiveHelixCanvas interactive={true} speedMultiplier={1.2} className="w-full h-full" />
+              {/* Live 3D Interactive Helix / Cell Visual */}
+              <InteractiveHelixCanvas interactive={true} speedMultiplier={1.3} className="w-full h-full" />
             </div>
-          </motion.div>
+          </div>
 
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
