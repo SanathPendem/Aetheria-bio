@@ -28,8 +28,8 @@ export const InnovationSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono tracking-widest uppercase">
-            ✦ Core Platform Capabilities
+          <div className="inline-flex items-center justify-center gap-2 text-cyan-400 text-xs sm:text-sm font-mono tracking-widest uppercase">
+            ✦ CORE PLATFORM CAPABILITIES
           </div>
           <h2 className="font-outfit text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
             The Intelligence <br />

@@ -9,8 +9,8 @@ export const TechStackSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase">
-            ✦ End-To-End Computational Stack
+          <div className="inline-flex items-center justify-center gap-2 text-cyan-400 text-xs sm:text-sm font-mono tracking-widest uppercase">
+            ✦ END-TO-END COMPUTATIONAL STACK
           </div>
           <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Our Technology <span className="text-gradient-cyan">Stack</span>

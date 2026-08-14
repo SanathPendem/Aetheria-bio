@@ -26,8 +26,8 @@ export const DrugPipelineSection: React.FC<DrugPipelineProps> = ({ onOpenPartner
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase">
-            ✦ Horizontal Pipeline Flow
+          <div className="inline-flex items-center justify-center gap-2 text-cyan-400 text-xs sm:text-sm font-mono tracking-widest uppercase">
+            ✦ HORIZONTAL PIPELINE FLOW
           </div>
           <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
             Integrated Drug Discovery <span className="text-gradient-cyan">Pipeline</span>
