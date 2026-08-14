@@ -2,19 +2,19 @@
 
 @layer base {
   :root, [data-theme="bioidea"] {
-    --bg-canvas: #E6EDF5;
+    --bg-canvas: #DCE5F2;
     --bg-surface: #FFFFFF;
     --bg-bento-dark: #0B0F17;
-    --bg-bento-light: #F8FAFC;
+    --bg-bento-light: #F1F5F9;
     --border-subtle: rgba(15, 23, 42, 0.08);
-    --text-main: #0F172A;
+    --text-main: #0B0F17;
     --text-muted: #475569;
-    --primary-color: #0F172A;
-    --secondary-color: #3B82F6;
-    --accent-color: #8B5CF6;
-    --glow-primary: rgba(59, 130, 246, 0.15);
-    --badge-bg: #F1F5F9;
-    --badge-text: #0F172A;
+    --primary-color: #0B0F17;
+    --secondary-color: #2563EB;
+    --accent-color: #0284C7;
+    --glow-primary: rgba(37, 99, 235, 0.15);
+    --badge-bg: #E2E8F0;
+    --badge-text: #0B0F17;
     --font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
   }
 
@@ -143,13 +143,13 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .bento-card-light:hover {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(37, 99, 235, 0.3);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
 }
 
 /* Dynamic Gradient Text Classes */
 .text-gradient-cyan {
-  background: linear-gradient(135deg, #0F172A 0%, #2563EB 50%, #7C3AED 100%);
+  background: linear-gradient(135deg, #0B0F17 0%, #2563EB 50%, #7C3AED 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -163,7 +163,7 @@
 }
 
 .text-gradient-emerald {
-  background: linear-gradient(135deg, #0F172A 0%, #059669 50%, #2563EB 100%);
+  background: linear-gradient(135deg, #0B0F17 0%, #059669 50%, #2563EB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

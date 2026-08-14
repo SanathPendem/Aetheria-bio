@@ -10,7 +10,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPartnerModal }) => {
   return (
-    <section id="hero" className="relative pt-32 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bio-grid-pattern">
+    <section id="hero" className="relative pt-8 pb-16 lg:pt-12 lg:pb-20 overflow-hidden bio-grid-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
         {/* Top Hero Text Header & Tagline */}
