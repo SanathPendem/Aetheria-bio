@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-slate-950 text-white text-sm pt-16 pb-12">
+    <footer className="bg-[#020711] border-t border-cyan-500/20 text-slate-400 text-sm pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Top Grid */}
@@ -16,16 +16,21 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-2xl bg-white text-slate-950 flex items-center justify-center font-bold">
-                <Dna className="w-5 h-5 text-slate-950" />
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-500/40 flex items-center justify-center">
+                <Dna className="w-6 h-6 text-cyan-400" />
               </div>
-              <span className="font-outfit text-2xl font-extrabold tracking-tight text-white">
-                BioIdea <span className="text-cyan-400 font-mono text-xs">BIO</span>
-              </span>
+              <div>
+                <span className="font-outfit text-xl font-extrabold tracking-tight text-white block">
+                  AETHERIA <span className="text-cyan-400">BIO</span>
+                </span>
+                <span className="block text-[9px] uppercase tracking-widest text-slate-400 font-mono">
+                  SUB-ATOMIC BIO-ENGINEERING
+                </span>
+              </div>
             </div>
 
-            <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
-              Aetheria Bio is a biotechnology company pioneering quantum-assisted protein engineering, organ-targeted LNP mRNA delivery, and synthetic tissue-chip platforms.
+            <p className="text-xs text-[#AAB8C8] max-w-sm leading-relaxed">
+              Engineering the next generation of cellular therapeutics through AI, quantum biology, and precision delivery.
             </p>
 
             <div className="flex items-center gap-2 pt-2">
@@ -33,50 +38,47 @@ export const Footer: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span className="text-[11px] font-mono text-cyan-400">Platform Telemetry: Operational</span>
+              <span className="text-[11px] font-mono text-cyan-400">Quantum Obsidian Nodes: Operational</span>
             </div>
           </div>
 
-          {/* Column 1: Pipeline */}
-          <div className="space-y-3">
-            <h4 className="font-outfit text-xs font-bold text-white uppercase tracking-wider">Pipeline</h4>
-            <ul className="space-y-2 text-xs">
-              <li><a href="#pipeline" className="hover:text-cyan-400 transition-colors text-slate-400">AX-101 (OncoZen mRNA)</a></li>
-              <li><a href="#pipeline" className="hover:text-cyan-400 transition-colors text-slate-400">AX-204 (NeuroMend Cas14)</a></li>
-              <li><a href="#pipeline" className="hover:text-cyan-400 transition-colors text-slate-400">AX-309 (CardioVita)</a></li>
-              <li><a href="#pipeline" className="hover:text-cyan-400 transition-colors text-slate-400">AX-412 (SynOrgan Tissue)</a></li>
-              <li><a href="#pipeline" className="hover:text-cyan-400 transition-colors text-slate-400">AX-505 (PolyFold)</a></li>
-            </ul>
-          </div>
-
-          {/* Column 2: Platform */}
+          {/* Column 1: Platform */}
           <div className="space-y-3">
             <h4 className="font-outfit text-xs font-bold text-white uppercase tracking-wider">Platform</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#technology" className="hover:text-cyan-400 transition-colors text-slate-400">Generative Quantum Folding</a></li>
-              <li><a href="#technology" className="hover:text-cyan-400 transition-colors text-slate-400">Organ-Tropic LNPs</a></li>
-              <li><a href="#technology" className="hover:text-cyan-400 transition-colors text-slate-400">CRISPR Epigenetics</a></li>
+              <li><a href="#innovation" className="hover:text-cyan-400 transition-colors text-slate-400">Innovation Engine</a></li>
+              <li><a href="#technology" className="hover:text-cyan-400 transition-colors text-slate-400">Quantum Molecular Docking</a></li>
               <li><a href="#technology" className="hover:text-cyan-400 transition-colors text-slate-400">Bio-Workbench Simulator</a></li>
-              <li><a href="#impact" className="hover:text-cyan-400 transition-colors text-slate-400">Publications & Research</a></li>
+              <li><a href="#pipeline" className="hover:text-cyan-400 transition-colors text-slate-400">Drug Pipeline Matrix</a></li>
             </ul>
           </div>
 
-          {/* Column 3: Corporate */}
+          {/* Column 2: Science */}
           <div className="space-y-3">
-            <h4 className="font-outfit text-xs font-bold text-white uppercase tracking-wider">Corporate & Legal</h4>
+            <h4 className="font-outfit text-xs font-bold text-white uppercase tracking-wider">Science</h4>
             <ul className="space-y-2 text-xs">
+              <li><a href="#impact" className="hover:text-cyan-400 transition-colors text-slate-400">Clinical Validation</a></li>
+              <li><a href="#impact" className="hover:text-cyan-400 transition-colors text-slate-400">Peer-Reviewed Publications</a></li>
               <li><a href="#impact" className="hover:text-cyan-400 transition-colors text-slate-400">Research Hubs</a></li>
+              <li><a href="#technology" className="hover:text-cyan-400 transition-colors text-slate-400">Organ-Tropic LNPs</a></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Company */}
+          <div className="space-y-3">
+            <h4 className="font-outfit text-xs font-bold text-white uppercase tracking-wider">Company</h4>
+            <ul className="space-y-2 text-xs">
+              <li><a href="#hero" className="hover:text-cyan-400 transition-colors text-slate-400">About Aetheria Bio</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors text-slate-400">Careers & Fellowships</a></li>
+              <li><a href="#contact" className="hover:text-cyan-400 transition-colors text-slate-400">Partners & Licensing</a></li>
               <li><a href="#contact" className="hover:text-cyan-400 transition-colors text-slate-400">Investor Relations</a></li>
-              <li><a href="#contact" className="hover:text-cyan-400 transition-colors text-slate-400">Regulatory Compliance</a></li>
-              <li><a href="#contact" className="hover:text-cyan-400 transition-colors text-slate-400">Privacy Policy</a></li>
-              <li><a href="#contact" className="hover:text-cyan-400 transition-colors text-slate-400">Terms of Service</a></li>
             </ul>
           </div>
 
         </div>
 
         {/* Bottom Strip */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
           <div className="text-slate-400">
             © {new Date().getFullYear()} Aetheria Bio Therapeutics Inc. All rights reserved.
           </div>
@@ -90,10 +92,10 @@ export const Footer: React.FC = () => {
             </a>
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-full bg-slate-900 border border-slate-800 hover:border-cyan-400 hover:text-white transition-colors ml-2"
+              className="p-2 rounded-full bg-slate-950 border border-cyan-500/30 hover:border-cyan-400 hover:text-white transition-colors ml-2"
               aria-label="Back to Top"
             >
-              <ArrowUp className="w-4 h-4" />
+              <ArrowUp className="w-4 h-4 text-cyan-400" />
             </button>
           </div>
         </div>

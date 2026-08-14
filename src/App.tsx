@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { TrustMetricsBar } from './components/TrustMetricsBar';
 import { InnovationSection } from './components/InnovationSection';
-import { TechnologySection } from './components/TechnologySection';
 import { CapabilitiesSection } from './components/CapabilitiesSection';
+import { DrugPipelineSection } from './components/DrugPipelineSection';
 import { ImpactSection } from './components/ImpactSection';
+import { BioWorkbenchSimulator } from './components/BioWorkbenchSimulator';
+import { TechStackSection } from './components/TechStackSection';
+import { ResearchBlogSection } from './components/ResearchBlogSection';
 import { FinalCTASection } from './components/FinalCTASection';
 import { Footer } from './components/Footer';
 import { PartnerModal } from './components/PartnerModal';
@@ -27,43 +31,66 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-canvas)] py-3 sm:py-6 px-2 sm:px-6 relative overflow-x-hidden selection:bg-slate-900 selection:text-white transition-colors duration-500">
+    <div className="min-h-screen bg-[#020711] text-slate-100 relative overflow-x-hidden selection:bg-[#00F2FE] selection:text-black transition-colors duration-500">
       {/* Background Floating Particle Field */}
-      <MolecularParticleField particleCount={30} className="z-0 opacity-40 pointer-events-none" />
+      <MolecularParticleField particleCount={45} className="z-0 opacity-60 pointer-events-none" />
 
-      {/* Main BioIdea Outer Floating Frame (Matching Dribbble Reference Screenshot Layout) */}
-      <div className="max-w-[1440px] mx-auto bg-[var(--bg-surface)] rounded-[28px] sm:rounded-[40px] lg:rounded-[48px] shadow-2xl shadow-slate-900/10 border border-slate-200/80 overflow-hidden relative transition-colors duration-500">
-        
-        {/* Navigation Header */}
-        <Navbar onOpenPartnerModal={handleOpenPartnerModal} />
+      {/* Navigation Header */}
+      <Navbar onOpenPartnerModal={handleOpenPartnerModal} />
 
-        {/* Main Content Layout - 6 Required Sections */}
-        <main className="relative z-10">
-          {/* 1. Hero Section */}
-          <HeroSection
-            onOpenPartnerModal={handleOpenPartnerModal}
-            onOpenWhitepaperModal={handleOpenWhitepaperModal}
-          />
+      {/* Main Content Layout */}
+      <main className="relative z-10">
+        {/* 1. Hero Section (Two-Column + 3D Helix Visual + Floating Glass Cards) */}
+        <HeroSection
+          onOpenPartnerModal={handleOpenPartnerModal}
+          onOpenWhitepaperModal={handleOpenWhitepaperModal}
+        />
 
-          {/* 2. About / Innovation Section */}
-          <InnovationSection />
+        {/* 2. Trust Metrics Section (Horizontal Glass Cards) */}
+        <TrustMetricsBar />
 
-          {/* 3. Technology & Research Section (Includes Bio-Workbench Simulator) */}
-          <TechnologySection />
+        {/* 3. Innovation Section ("The Intelligence Behind the Biology") */}
+        <InnovationSection />
 
-          {/* 4. Capabilities / Therapeutics Pipeline Section */}
-          <CapabilitiesSection onOpenPartnerModal={handleOpenPartnerModal} />
+        {/* 4. Therapeutics Matrix Section */}
+        <CapabilitiesSection onOpenPartnerModal={handleOpenPartnerModal} />
 
-          {/* 5. Statistics / Impact & Publications Section */}
-          <ImpactSection />
+        {/* 5. Drug Pipeline Horizontal Visualization */}
+        <DrugPipelineSection onOpenPartnerModal={handleOpenPartnerModal} />
 
-          {/* 6. Final Closing Call-to-Action Section */}
-          <FinalCTASection onOpenPartnerModal={handleOpenPartnerModal} />
-        </main>
+        {/* 6. Clinical Validation Dashboard Section */}
+        <ImpactSection />
 
-        {/* Footer */}
-        <Footer />
-      </div>
+        {/* 7. Bio-Workbench Interactive SaaS Feature */}
+        <section id="technology" className="py-20 relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase">
+                ✦ Interactive Computational Platform
+              </div>
+              <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                Bio-Workbench <span className="text-gradient-cyan">Simulation Suite</span>
+              </h2>
+              <p className="text-slate-400 text-base sm:text-lg">
+                Explore real-time biophysical target docking, binding free energy (ΔG), and cellular tropism calculations in our interactive workbench.
+              </p>
+            </div>
+            <BioWorkbenchSimulator />
+          </div>
+        </section>
+
+        {/* 8. Our Technology Stack Flow Section */}
+        <TechStackSection />
+
+        {/* 9. Research Insights & Editorial Blog */}
+        <ResearchBlogSection />
+
+        {/* 10. Final Closing Call-to-Action Section */}
+        <FinalCTASection onOpenPartnerModal={handleOpenPartnerModal} />
+      </main>
+
+      {/* Footer */}
+      <Footer />
 
       {/* Modals */}
       <PartnerModal

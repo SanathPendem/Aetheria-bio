@@ -1,37 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Globe, BookOpen, ExternalLink } from 'lucide-react';
-import { IMPACT_STATS, PUBLICATIONS_DATA } from '../data/biotechData';
+import React from 'react';
+import { Globe, BookOpen, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { PUBLICATIONS_DATA } from '../data/biotechData';
 
 export const ImpactSection: React.FC = () => {
-  const [counts, setCounts] = useState<{ [key: string]: number }>({
-    molecules: 0,
-    accuracy: 0,
-    trials: 0,
-    funding: 0,
-  });
-
-  useEffect(() => {
-    const duration = 1800;
-    const steps = 40;
-    const intervalTime = duration / steps;
-    let stepCount = 0;
-
-    const timer = setInterval(() => {
-      stepCount++;
-      const progress = stepCount / steps;
-
-      setCounts({
-        molecules: Math.floor(450 * Math.min(1, progress)),
-        accuracy: parseFloat((99.98 * Math.min(1, progress)).toFixed(2)),
-        trials: Math.floor(5 * Math.min(1, progress)),
-        funding: Math.floor(128 * Math.min(1, progress)),
-      });
-
-      if (stepCount >= steps) clearInterval(timer);
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, []);
+  const validationMetrics = [
+    { label: 'TARGET VALIDATION', value: '98.2%', desc: 'Validated binding pocket affinity across wild-type & mutant variants' },
+    { label: 'PROTEIN BINDING', value: '94.8%', desc: 'Sub-nanomolar binding Kd equilibrium affinity' },
+    { label: 'CELLULAR UPTAKE', value: '91.6%', desc: 'Organ-tropic LNP cellular endocytosis rate' },
+    { label: 'MODEL ACCURACY', value: '96.4%', desc: 'Generative AI protein folding structural prediction fidelity' },
+  ];
 
   const researchHubs = [
     { city: 'Boston HQ', role: 'Generative AI & Quantum Computing Center', status: 'Primary Hub', LatLng: '42.3601° N, 71.0589° W' },
@@ -41,66 +18,65 @@ export const ImpactSection: React.FC = () => {
   ];
 
   return (
-    <section id="impact" className="relative py-20 bio-grid-pattern overflow-hidden">
+    <section id="impact" className="relative py-24 bio-grid-pattern overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-200/80 text-slate-900 text-xs font-semibold uppercase tracking-wider">
-            04 / Empirical Benchmarks & Clinical Validation
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-widest uppercase">
+            ✦ Empirical Physics & Scientific Rigor
           </div>
-          <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-[var(--text-main)] tracking-tight">
-            Quantifiable Physics-Driven <span className="text-gradient-cyan">Bio-Breakthroughs</span>
+          <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Clinical & Biophysical <span className="text-gradient-cyan">Validation</span>
           </h2>
-          <p className="text-[var(--text-muted)] text-base sm:text-lg">
+          <p className="text-[#AAB8C8] text-base sm:text-lg">
             Empirical validation driving world-class outcomes across peer-reviewed journals, global patents, and clinical trial milestones.
           </p>
         </div>
 
-        {/* Dynamic Animated Pitch-Black Bento Stats Grid */}
+        {/* Validation Metric Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {IMPACT_STATS.map((stat) => {
-            const currentValue = counts[stat.id] !== undefined ? counts[stat.id] : stat.value;
-            return (
-              <div
-                key={stat.id}
-                className="bento-card-dark p-8 text-center space-y-3 relative group overflow-hidden"
-              >
-                <div className="font-outfit text-4xl lg:text-5xl font-extrabold text-cyan-400 group-hover:scale-105 transition-transform duration-300">
-                  {stat.prefix}
-                  {currentValue}
-                  {stat.suffix}
-                </div>
-                <div className="font-outfit text-sm font-bold text-white uppercase tracking-wider">{stat.label}</div>
-                <p className="text-slate-400 text-xs leading-relaxed">{stat.description}</p>
+          {validationMetrics.map((m, idx) => (
+            <div
+              key={idx}
+              className="p-6 rounded-[28px] glass-panel glass-panel-hover border border-cyan-500/20 text-center space-y-3 relative group overflow-hidden"
+            >
+              <div className="flex items-center justify-between text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
+                <span>{m.label}</span>
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
               </div>
-            );
-          })}
+              <div className="font-outfit text-4xl lg:text-5xl font-extrabold text-white group-hover:scale-105 transition-transform duration-300">
+                {m.value}
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">{m.desc}</p>
+              <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+          ))}
         </div>
 
-        {/* Global Clinical Hubs Bento Grid */}
-        <div className="p-8 rounded-[32px] glass-panel space-y-8 shadow-xl border border-slate-200">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6">
+        {/* Global Clinical Hubs Interactive Grid */}
+        <div className="p-8 rounded-[32px] glass-panel border border-cyan-500/30 space-y-8 shadow-2xl">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
             <div className="flex items-center gap-3">
-              <Globe className="w-6 h-6 text-blue-600" />
-              <h3 className="font-outfit text-2xl font-bold text-slate-950">Global Research & Clinical Infrastructure Network</h3>
+              <Globe className="w-6 h-6 text-cyan-400" />
+              <h3 className="font-outfit text-2xl font-bold text-white">Global Research & Clinical Infrastructure Network</h3>
             </div>
-            <span className="text-xs font-mono text-emerald-600 font-bold flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              4 International Nodes Active
+            <span className="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              4 International Nodes Synchronized
             </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {researchHubs.map((hub, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-slate-100 border border-slate-200 space-y-2">
+              <div key={idx} className="p-5 rounded-2xl bg-slate-950/90 border border-white/10 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-outfit font-bold text-slate-950 text-base">{hub.city}</span>
-                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-slate-950 text-white">
+                  <span className="font-outfit font-bold text-white text-base">{hub.city}</span>
+                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-slate-900 border border-cyan-500/30 text-cyan-300">
                     {hub.status}
                   </span>
                 </div>
-                <p className="text-xs text-slate-600 leading-snug">{hub.role}</p>
+                <p className="text-xs text-slate-300 leading-snug">{hub.role}</p>
                 <span className="text-[10px] font-mono text-slate-400 block pt-1">{hub.LatLng}</span>
               </div>
             ))}
@@ -111,32 +87,32 @@ export const ImpactSection: React.FC = () => {
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-outfit text-2xl font-bold text-slate-950 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-blue-600" />
+              <h3 className="font-outfit text-2xl font-bold text-white flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-cyan-400" />
                 Featured Peer-Reviewed Publications
               </h3>
-              <p className="text-slate-500 text-sm">Published in premier high-impact scientific journals</p>
+              <p className="text-slate-400 text-sm">Published in premier high-impact scientific journals</p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {PUBLICATIONS_DATA.map((pub) => (
-              <div key={pub.id} className="p-6 rounded-[28px] bento-card-light space-y-4 flex flex-col justify-between hover:border-blue-500 transition-colors">
+              <div key={pub.id} className="p-6 rounded-[28px] glass-panel border border-white/10 space-y-4 flex flex-col justify-between hover:border-cyan-500/40 transition-colors">
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono text-blue-600 font-bold">
+                  <div className="flex items-center justify-between text-xs font-mono text-cyan-400">
                     <span>{pub.journal} ({pub.year})</span>
-                    <span className="px-2 py-0.5 rounded-full bg-slate-200 text-slate-900 text-[10px]">IF: {pub.impactFactor}</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-950 border border-cyan-500/30 text-[10px]">IF: {pub.impactFactor}</span>
                   </div>
-                  <h4 className="font-outfit text-base font-bold text-slate-950 leading-snug">{pub.title}</h4>
-                  <p className="text-xs text-slate-500">{pub.authors}</p>
+                  <h4 className="font-outfit text-base font-bold text-white leading-snug">{pub.title}</h4>
+                  <p className="text-xs text-slate-400">{pub.authors}</p>
                 </div>
-                <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-mono text-slate-500">
+                <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs font-mono text-slate-400">
                   <span>DOI: {pub.doi}</span>
                   <a
                     href={`https://doi.org/${pub.doi}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-bold flex items-center gap-1"
+                    className="text-cyan-400 hover:text-white flex items-center gap-1"
                   >
                     View <ExternalLink className="w-3 h-3" />
                   </a>

@@ -29,10 +29,10 @@ export interface InnovationPillar {
 }
 
 export interface WorkbenchParams {
-  bindingAffinity: number; // 0 - 100
-  cellularTropism: number; // 0 - 100
-  halfLifeDays: number; // 1 - 30
-  nanoparticleCharge: number; // -50 to +50 mV
+  bindingAffinity: number;
+  cellularTropism: number;
+  halfLifeDays: number;
+  nanoparticleCharge: number;
   targetDisease: 'Oncology' | 'Neurodegeneration' | 'Cardiovascular' | 'Rare Genetic';
 }
 
@@ -62,4 +62,22 @@ export interface ResearchPublication {
   doi: string;
   authors: string;
   impactFactor: string;
+}
+
+export interface ResearchArticle {
+  id: string;
+  category: string;
+  date: string;
+  readTime: string;
+  title: string;
+  description: string;
+  imageUrl?: string;
+}
+
+export interface TechStackStep {
+  id: string;
+  step: string;
+  name: string;
+  tech: string;
+  description: string;
 }

@@ -1,9 +1,9 @@
-import type { PipelineCandidate, InnovationPillar, ImpactStat, ResearchPublication } from '../types';
+import type { PipelineCandidate, InnovationPillar, ImpactStat, ResearchPublication, ResearchArticle, TechStackStep } from '../types';
 
 export const PIPELINE_DATA: PipelineCandidate[] = [
   {
     id: 'ax-101',
-    code: 'AX-101 (OncoZen)',
+    code: 'AETH-101',
     name: 'Targeted Pan-KRAS Inhibitor mRNA-LNP',
     target: 'Mutant KRAS (G12D / G12V)',
     indication: 'Refractory Pancreatic & Non-Small Cell Lung Cancer',
@@ -21,7 +21,7 @@ export const PIPELINE_DATA: PipelineCandidate[] = [
   },
   {
     id: 'ax-204',
-    code: 'AX-204 (NeuroMend)',
+    code: 'AETH-204',
     name: 'Blood-Brain Barrier Crossing CRISPR Cas14 Epigenetic Silencer',
     target: 'Tau & SNCA Protein Aggregates',
     indication: 'Early-onset Alzheimer\'s & Parkinson\'s Disease',
@@ -39,7 +39,7 @@ export const PIPELINE_DATA: PipelineCandidate[] = [
   },
   {
     id: 'ax-309',
-    code: 'AX-309 (CardioVita)',
+    code: 'AETH-309',
     name: 'In-Vivo Cardiac Myocyte Regenerative mRNA',
     target: 'Cyclin A2 / CDK2 Activation Path',
     indication: 'Post-Myocardial Infarction Heart Failure',
@@ -57,7 +57,7 @@ export const PIPELINE_DATA: PipelineCandidate[] = [
   },
   {
     id: 'ax-412',
-    code: 'AX-412 (SynOrgan)',
+    code: 'AETH-412',
     name: 'Vascularized Hepatic Micro-Organoid Matrix',
     target: 'FGF21 / ASGR1 Receptor Complex',
     indication: 'End-Stage Liver Failure & Metabolic NASH',
@@ -74,7 +74,7 @@ export const PIPELINE_DATA: PipelineCandidate[] = [
   },
   {
     id: 'ax-505',
-    code: 'AX-505 (PolyFold)',
+    code: 'AETH-505',
     name: 'De Novo Designed Multi-Specific Proteate Neutralizer',
     target: 'Interleukin-17 / TNF-alpha Synergistic Node',
     indication: 'Treatment-Resistant Rheumatoid Arthritis & Psoriasis',
@@ -95,68 +95,68 @@ export const INNOVATION_PILLARS: InnovationPillar[] = [
   {
     id: 'ai-folding',
     iconName: 'Cpu',
-    title: 'Quantum-Accelerated Protein Engineering',
-    subtitle: 'De Novo Molecular Design',
-    description: 'Our proprietary generative AI engine simulates sub-angstrom atomic interactions in real time, predicting protein folding dynamics and binding energies with 99.4% bench validation accuracy.',
+    title: 'AI Protein Design',
+    subtitle: 'Generative Molecular Synthesis',
+    description: 'Generative AI models simulate sub-angstrom atomic interactions in real time, designing novel therapeutic proteins optimized for specificity, stability, and cellular activity.',
     bullets: [
       'In-silico screening of 100M+ molecular variants in under 48 hours',
       'Quantum mechanical binding energy optimization',
       'Zero-shot target specificity prediction for minimal off-target interaction'
     ],
     metrics: [
-      { label: 'Screening Speedup', value: '1,400x' },
-      { label: 'Atomic Resolution', value: '0.65 Å' },
+      { label: 'Screening Velocity', value: '1,400x' },
+      { label: 'Atomic Accuracy', value: '0.45 Å' },
     ],
     visualType: 'folding'
   },
   {
-    id: 'lnp-delivery',
+    id: 'quantum-docking',
     iconName: 'Target',
-    title: 'Precision Organ-Targeted LNPs',
+    title: 'Quantum Molecular Docking',
+    subtitle: 'Sub-Atomic Energy Minimization',
+    description: 'Quantum-accelerated simulations evaluate complex protein-ligand conformational states, calculating free energy changes (ΔG) with sub-picomolar accuracy.',
+    bullets: [
+      'Quantum mechanical interaction field mapping',
+      'Cryptic pocket binding discovery across flexible protein targets',
+      'Sub-nanosecond thermodynamic equilibrium predictions'
+    ],
+    metrics: [
+      { label: 'Energy ΔG Accuracy', value: '99.4%' },
+      { label: 'Kd Resolution', value: '0.08 nM' },
+    ],
+    visualType: 'editing'
+  },
+  {
+    id: 'lnp-delivery',
+    iconName: 'Dna',
+    title: 'Precision mRNA Delivery',
     subtitle: 'Cellular Tropism Engineering',
-    description: 'Eliminating off-target liver accumulation through molecularly decorated lipid nanoparticle matrices engineered to cross difficult biological barriers like the Blood-Brain Barrier.',
+    description: 'Eliminating off-target tissue accumulation through molecularly decorated lipid nanoparticle matrices engineered for organ-specific cellular delivery.',
     bullets: [
       'Organ-specific receptor ligand functionalization',
       'High mRNA encapsulation payload density (>96%)',
       'Biodegradable lipid backbone with minimal immunogenicity'
     ],
     metrics: [
-      { label: 'Target Homing', value: '99.8%' },
+      { label: 'Target Tropism', value: '99.8%' },
       { label: 'BBB Permeability', value: '18.4%' },
     ],
     visualType: 'nanoparticle'
   },
   {
-    id: 'crispr-cas14',
-    iconName: 'Dna',
-    title: 'Ultra-Compact Epigenetic Modulation',
-    subtitle: 'Non-Cleaving Gene Regulation',
-    description: 'Utilizing miniaturized Cas14 nucleases paired with chromatin remodeling enzymes to permanently silence pathogenic genes or activate protective pathways without genomic double-strand breaks.',
-    bullets: [
-      'Zero double-strand DNA breaks (eliminating translocation risks)',
-      'Sub-20kb genetic payload size fits standard AAV and LNP delivery',
-      'Reversible and inheritable transcriptional silencing'
-    ],
-    metrics: [
-      { label: 'Off-Target Rate', value: '< 0.01%' },
-      { label: 'Silencing Half-life', value: '> 18 Mos' },
-    ],
-    visualType: 'editing'
-  },
-  {
-    id: 'bio-tissue',
+    id: 'cellular-eng',
     iconName: 'Activity',
-    title: '3D Vascularized Organoid Chips',
-    subtitle: 'High-Throughput In-Human Testing',
-    description: 'Microfluidic patient-derived organ-on-a-chip platforms that replicate real physiological microenvironments, accelerating preclinical human data generation prior to Phase I clinical trials.',
+    title: 'Cellular Engineering',
+    subtitle: 'Programmable Molecular Instructions',
+    description: 'Re-engineering cellular behavior with precise genetic and post-translational instructions designed for previously undruggable disease pathways.',
     bullets: [
-      'Perfused micro-vascular channels for nutrient and drug clearance dynamics',
-      'Integrated optical and electrochemical biosensors',
-      'Reduces preclinical animal reliance by over 80%'
+      'Compact Cas14 non-cleaving gene regulation',
+      '3D vascularized microfluidic organoid validation',
+      'Transient RNA-encoded cell state reprogramming'
     ],
     metrics: [
-      { label: 'Clinical Predictability', value: '94.2%' },
-      { label: 'Lead Time Reduction', value: '18 Months' },
+      { label: 'Off-Target Toxicity', value: '< 0.01%' },
+      { label: 'Human Predictability', value: '96.4%' },
     ],
     visualType: 'tissue'
   }
@@ -165,32 +165,36 @@ export const INNOVATION_PILLARS: InnovationPillar[] = [
 export const IMPACT_STATS: ImpactStat[] = [
   {
     id: 'molecules',
-    label: 'Molecules Screened In-Silico',
-    value: 450,
-    suffix: 'M+',
-    description: 'AI-generated target protein candidates evaluated'
+    label: 'Molecular Simulations',
+    value: 32,
+    prefix: '',
+    suffix: 'K+',
+    description: 'AI-designed target protein candidates evaluated'
+  },
+  {
+    id: 'trials',
+    label: 'Therapeutic Programs',
+    value: 15,
+    prefix: '',
+    suffix: '+',
+    description: 'Active programs across Oncology, CNS & Cardiology'
   },
   {
     id: 'accuracy',
-    label: 'Target Binding Accuracy',
-    value: 99.8,
+    label: 'Docking Confidence',
+    value: 98.7,
+    prefix: '',
     suffix: '%',
     decimals: 1,
     description: 'Validated in wet-lab biophysical assays'
   },
   {
-    id: 'trials',
-    label: 'Active Clinical Programs',
-    value: 5,
-    suffix: ' Candidates',
-    description: 'Therapeutic programs across Oncology, CNS & Cardiology'
-  },
-  {
     id: 'funding',
-    label: 'Global Patent Portfolio',
-    value: 128,
-    suffix: ' Issued',
-    description: 'Protected delivery vehicles & novel molecular structures'
+    label: 'Targeted Cell Types',
+    value: 12,
+    prefix: '',
+    suffix: '',
+    description: 'Organ-specific cell populations with proven tropism'
   }
 ];
 
@@ -222,4 +226,41 @@ export const PUBLICATIONS_DATA: ResearchPublication[] = [
     authors: 'Dr. S. Al-Mansoor, Dr. A. Gupta et al.',
     impactFactor: '17.1'
   }
+];
+
+export const RESEARCH_ARTICLES: ResearchArticle[] = [
+  {
+    id: 'art-1',
+    category: 'AI PROTEIN DESIGN',
+    date: 'AUG 12, 2026',
+    readTime: '6 MIN READ',
+    title: 'How Generative Models Are Changing De Novo Drug Discovery',
+    description: 'Exploring how sub-angstrom transformer models accurately predict multi-state protein interactions without trial-and-error wet-lab screening.'
+  },
+  {
+    id: 'art-2',
+    category: 'QUANTUM BIOLOGY',
+    date: 'JUL 28, 2026',
+    readTime: '8 MIN READ',
+    title: 'The Computational Future of Molecular Simulation & Free Energy States',
+    description: 'How quantum mechanical interaction fields calculate binding ΔG energy with sub-picomolar fidelity in complex cellular environments.'
+  },
+  {
+    id: 'art-3',
+    category: 'mRNA DELIVERY',
+    date: 'JUL 14, 2026',
+    readTime: '5 MIN READ',
+    title: 'Engineering Precision Organ-Tropic Lipid Nanoparticle Carriers',
+    description: 'Overcoming the liver accumulation bottleneck: ligand functionalization methods for receptor-mediated transcytosis across the BBB.'
+  }
+];
+
+export const TECH_STACK_FLOW: TechStackStep[] = [
+  { id: '1', step: '01', name: 'GenAI Engine', tech: 'AlphaFold3 & ESMFold Fine-Tuned Model', description: 'De novo generative sequences predicting initial binding target scaffolds.' },
+  { id: '2', step: '02', name: 'Protein Design', tech: 'Sub-Angstrom Backbone Refinement', description: 'Optimizing side-chain conformational stability and surface charge.' },
+  { id: '3', step: '03', name: 'Quantum Simulation', tech: 'Quantum Interaction Fields (ΔG)', description: 'Simulating thermodynamic binding free energy in real time.' },
+  { id: '4', step: '04', name: 'Molecular Docking', tech: 'Cryptic Pocket Affinity Screening', description: 'Identifying hidden druggable allosteric sites with 98.7% confidence.' },
+  { id: '5', step: '05', name: 'LNP Engineering', tech: 'Organ-Tropic Ligand Formulation', description: 'Functionalizing nanocarriers for targeted transcytosis and cell uptake.' },
+  { id: '6', step: '06', name: 'Cellular Delivery', tech: 'Microfluidic Tissue-Chip Validation', description: 'Assessing organoid clearance, tropism, and pharmacokinetics.' },
+  { id: '7', step: '07', name: 'Therapeutic Candidate', tech: 'Phase-Ready Clinical IND Package', description: 'Curative candidate transition into Phase I/II accelerated trials.' }
 ];
