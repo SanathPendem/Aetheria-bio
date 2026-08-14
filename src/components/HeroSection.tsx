@@ -25,10 +25,10 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
-            {/* Tagline Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/80 border border-[var(--badge-border)] text-[var(--badge-text)] text-xs sm:text-sm font-mono shadow-lg shadow-[var(--glow-primary)] backdrop-blur-md">
+            {/* Tagline */}
+            <div className="inline-flex items-center gap-2.5 text-[var(--badge-text)] text-xs sm:text-sm font-mono tracking-widest uppercase">
               <Sparkles className="w-4 h-4 text-[var(--primary-color)] animate-pulse" />
-              <span className="uppercase tracking-widest">[ AI-Driven Cellular Engineering & Quantum Docking ]</span>
+              <span>AI-Driven Cellular Engineering & Quantum Docking</span>
             </div>
 
             {/* Main Visionary Headline */}
