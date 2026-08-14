@@ -39,7 +39,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/80 border border-[var(--badge-border)] text-[var(--badge-text)] text-xs font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 text-[var(--primary-color)] text-xs font-mono tracking-widest uppercase">
             03 / Clinical Modality Matrix & Capabilities
           </div>
           <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">

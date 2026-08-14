@@ -16,7 +16,7 @@ export const FinalCTASection: React.FC<FinalCTAProps> = ({ onOpenPartnerModal })
             <Dna className="w-96 h-96 text-[var(--primary-color)]" />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/80 border border-[var(--badge-border)] text-[var(--badge-text)] text-xs font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 text-[var(--primary-color)] text-xs font-mono tracking-widest uppercase">
             <Sparkles className="w-3.5 h-3.5 text-[var(--primary-color)]" />
             05 / Accelerate Your Clinical Pipeline
           </div>

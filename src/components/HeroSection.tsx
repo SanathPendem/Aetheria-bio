@@ -26,7 +26,7 @@ export const HeroSection: React.FC<HeroSectionProps> = () => {
             className="lg:col-span-7 space-y-6 text-center lg:text-left"
           >
             {/* Tagline */}
-            <div className="inline-flex items-center gap-2.5 text-[var(--badge-text)] text-xs sm:text-sm font-mono tracking-widest uppercase">
+            <div className="inline-flex items-center gap-2.5 text-[var(--primary-color)] text-xs sm:text-sm font-mono tracking-widest uppercase">
               <Sparkles className="w-4 h-4 text-[var(--primary-color)] animate-pulse" />
               <span>AI-Driven Cellular Engineering & Quantum Docking</span>
             </div>
