@@ -49,7 +49,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-xl rounded-3xl bg-[#0E1424] border border-cyan-500/40 p-6 sm:p-8 shadow-2xl shadow-cyan-950/60 overflow-hidden"
+          className="relative w-full max-w-xl rounded-3xl bg-slate-950 border border-[var(--primary-color)]/40 p-6 sm:p-8 shadow-2xl shadow-[var(--glow-primary)] overflow-hidden hud-corner-box"
         >
           {/* Close button */}
           <button
@@ -62,7 +62,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
           {!submitted ? (
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest block">Executive Inquiry</span>
+                <span className="text-xs font-mono text-[var(--primary-color)] uppercase tracking-widest block">Executive Inquiry</span>
                 <h3 className="font-outfit text-2xl font-bold text-white mt-1">Initiate Strategic Partnership</h3>
                 <p className="text-slate-400 text-xs mt-1">
                   Connect with Aetheria Bio’s business development and scientific advisory committee.
@@ -80,7 +80,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Dr. Evelyn Vance"
-                      className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:border-cyan-400 focus:outline-none"
+                      className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:border-[var(--primary-color)] focus:outline-none"
                     />
                   </div>
                 </div>
@@ -96,7 +96,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.vance@pharma.com"
-                        className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:border-cyan-400 focus:outline-none"
+                        className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:border-[var(--primary-color)] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -111,7 +111,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                         placeholder="Genomics Institute / Bio-Pharma"
-                        className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:border-cyan-400 focus:outline-none"
+                        className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:border-[var(--primary-color)] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -122,7 +122,7 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
                   <select
                     value={formData.partnershipType}
                     onChange={(e) => setFormData({ ...formData, partnershipType: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:border-cyan-400 focus:outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:border-[var(--primary-color)] focus:outline-none"
                   >
                     <option value="Co-Development & Licensing">Co-Development & Clinical Licensing</option>
                     <option value="AI Engine Target Discovery">AI Protein Engine Target Screening</option>
@@ -138,13 +138,13 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Briefly describe target indication or program requirements..."
-                    className="w-full p-3 rounded-xl bg-slate-950 border border-white/10 text-white text-sm focus:border-cyan-400 focus:outline-none resize-none"
+                    className="w-full p-3 rounded-xl bg-slate-900 border border-white/10 text-white text-sm focus:border-[var(--primary-color)] focus:outline-none resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/25"
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-slate-950 font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-[var(--glow-primary)]"
                 >
                   <Send className="w-4 h-4" />
                   Submit Partnership Request
@@ -153,12 +153,12 @@ export const PartnerModal: React.FC<PartnerModalProps> = ({ isOpen, onClose }) =
             </div>
           ) : (
             <div className="py-8 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 rounded-full bg-[var(--primary-color)]/20 border border-[var(--primary-color)]/40 text-[var(--primary-color)] flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <h3 className="font-outfit text-2xl font-bold text-white">Inquiry Transmitted</h3>
               <p className="text-slate-300 text-sm max-w-sm mx-auto">
-                Thank you, <span className="text-cyan-400 font-bold">{formData.name}</span>. Our Business Development team will contact you at <span className="text-white font-mono">{formData.email}</span> within 24 hours.
+                Thank you, <span className="text-[var(--primary-color)] font-bold">{formData.name}</span>. Our Business Development team will contact you at <span className="text-white font-mono">{formData.email}</span> within 24 hours.
               </p>
               <button
                 onClick={handleReset}

@@ -34,19 +34,19 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
   };
 
   return (
-    <section id="pipeline" className="relative py-24 bg-[#070A11] bio-dots-pattern overflow-hidden">
+    <section id="pipeline" className="relative py-24 bg-[var(--bg-dark)] bio-dots-pattern overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs font-mono tracking-widest uppercase">
-            03 / Therapeutic Pipeline & Capabilities
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/80 border border-[var(--badge-border)] text-[var(--badge-text)] text-xs font-mono tracking-widest uppercase">
+            03 / Clinical Modality Matrix & Capabilities
           </div>
           <h2 className="font-outfit text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Advanced Clinical <span className="text-gradient-purple">Therapeutic Matrix</span>
+            Curative Modalities Engineered for <span className="text-gradient-purple">Undruggable Genomes</span>
           </h2>
           <p className="text-slate-300 text-base sm:text-lg">
-            Our pipeline addresses high unmet medical needs across oncology, neurodegeneration, and cardiovascular disease with proprietary targeted delivery systems.
+            Our pipeline addresses high unmet medical needs across oncology, neurodegeneration, and cardiovascular disease with proprietary targeted mRNA-LNP delivery systems.
           </p>
         </div>
 
@@ -58,8 +58,8 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
               onClick={() => setFilterModality(mod)}
               className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all border ${
                 filterModality === mod
-                  ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-black border-transparent shadow-lg shadow-cyan-500/20'
-                  : 'bg-slate-900/80 border-white/10 text-slate-300 hover:text-white hover:border-white/30'
+                  ? 'bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-slate-950 border-transparent shadow-lg shadow-[var(--glow-primary)] font-extrabold'
+                  : 'bg-slate-950/80 border-white/10 text-slate-300 hover:text-white hover:border-white/30'
               }`}
             >
               {mod === 'All' ? 'All Modalities' : mod}
@@ -75,7 +75,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
               onClick={() => setSelectedCandidate(selectedCandidate?.id === candidate.id ? null : candidate)}
               className={`p-6 rounded-2xl glass-panel glass-panel-hover border transition-all duration-300 cursor-pointer ${
                 selectedCandidate?.id === candidate.id
-                  ? 'border-cyan-500/60 bg-slate-900/90 shadow-xl shadow-cyan-950/40'
+                  ? 'border-[var(--primary-color)] bg-slate-900/90 shadow-xl shadow-[var(--glow-primary)]'
                   : 'border-white/10 hover:border-white/20'
               }`}
             >
@@ -89,7 +89,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
                       {candidate.phase}
                     </span>
                   </div>
-                  <div className="text-xs font-mono text-cyan-400">{candidate.indication}</div>
+                  <div className="text-xs font-mono text-[var(--primary-color)]">{candidate.indication}</div>
                   <div className="text-xs text-slate-400">{candidate.name}</div>
                 </div>
 
@@ -101,7 +101,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
                   </div>
                   <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-white/5">
                     <div
-                      className="h-full bg-gradient-to-r from-cyan-500 via-teal-400 to-emerald-400 rounded-full transition-all duration-500 shadow-sm shadow-cyan-400"
+                      className="h-full bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] rounded-full transition-all duration-500 shadow-sm shadow-[var(--primary-color)]"
                       style={{ width: `${candidate.progressPercentage}%` }}
                     />
                   </div>
@@ -120,7 +120,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
                     {candidate.modality}
                   </span>
                   <button className="p-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white hover:bg-slate-800">
-                    <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${selectedCandidate?.id === candidate.id ? 'rotate-90 text-cyan-400' : ''}`} />
+                    <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${selectedCandidate?.id === candidate.id ? 'rotate-90 text-[var(--primary-color)]' : ''}`} />
                   </button>
                 </div>
 
@@ -143,26 +143,26 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950/80 p-4 rounded-xl border border-white/5 text-left">
                       <div>
                         <span className="text-[10px] font-mono uppercase text-slate-400 block">Binding Affinity</span>
-                        <span className="font-outfit font-bold text-cyan-400 text-sm">{candidate.keyData.bindingAffinity}</span>
+                        <span className="font-outfit font-bold text-[var(--primary-color)] text-sm">{candidate.keyData.bindingAffinity}</span>
                       </div>
                       <div>
                         <span className="text-[10px] font-mono uppercase text-slate-400 block">Target Tropism</span>
-                        <span className="font-outfit font-bold text-emerald-400 text-sm">{candidate.keyData.targetSelectivity}</span>
+                        <span className="font-outfit font-bold text-[var(--secondary-color)] text-sm">{candidate.keyData.targetSelectivity}</span>
                       </div>
                       <div>
                         <span className="text-[10px] font-mono uppercase text-slate-400 block">In-Vivo Half-Life</span>
-                        <span className="font-outfit font-bold text-purple-400 text-sm">{candidate.keyData.inVivoHalfLife}</span>
+                        <span className="font-outfit font-bold text-[var(--accent-color)] text-sm">{candidate.keyData.inVivoHalfLife}</span>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
                       <div className="flex items-center gap-2">
                         <span className="text-xs font-mono text-slate-400">Clinical ID:</span>
-                        <span className="text-xs font-mono text-cyan-300">{candidate.clinicalTrialId || 'IND-Pending'}</span>
+                        <span className="text-xs font-mono text-[var(--badge-text)]">{candidate.clinicalTrialId || 'IND-Pending'}</span>
                       </div>
                       <button
                         onClick={onOpenPartnerModal}
-                        className="px-4 py-2 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500 hover:text-black font-semibold text-xs transition-colors flex items-center gap-1.5"
+                        className="px-4 py-2 rounded-xl bg-[var(--primary-color)]/20 border border-[var(--primary-color)]/40 text-[var(--badge-text)] hover:bg-[var(--primary-color)] hover:text-slate-950 font-semibold text-xs transition-colors flex items-center gap-1.5"
                       >
                         Inquire Licensing Opportunities
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -176,7 +176,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
         </div>
 
         {/* Strategic Licensing Capabilities Box */}
-        <div className="p-8 rounded-3xl glass-panel border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl">
+        <div className="p-8 rounded-3xl glass-panel border border-[var(--primary-color)]/30 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl hud-corner-box">
           <div className="space-y-2">
             <h3 className="font-outfit text-2xl font-bold text-white">Platform Licensing & Co-Development</h3>
             <p className="text-slate-300 text-sm max-w-2xl">
@@ -185,7 +185,7 @@ export const CapabilitiesSection: React.FC<CapabilitiesProps> = ({ onOpenPartner
           </div>
           <button
             onClick={onOpenPartnerModal}
-            className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shrink-0 shadow-lg shadow-cyan-500/25"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-slate-950 font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all shrink-0 shadow-lg shadow-[var(--glow-primary)]"
           >
             Request Partnership Briefing
           </button>

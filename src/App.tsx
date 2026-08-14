@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { InnovationSection } from './components/InnovationSection';
@@ -10,7 +11,7 @@ import { Footer } from './components/Footer';
 import { PartnerModal } from './components/PartnerModal';
 import { MolecularParticleField } from './components/canvas/MolecularParticleField';
 
-export function App() {
+export function AppContent() {
   const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
 
   const handleOpenPartnerModal = () => {
@@ -26,7 +27,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070A11] text-slate-100 relative overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-[var(--bg-dark)] text-slate-100 relative overflow-x-hidden selection:bg-cyan-500 selection:text-black transition-colors duration-500">
       {/* Background Floating Particle Field */}
       <MolecularParticleField particleCount={40} className="z-0" />
 
@@ -69,4 +70,13 @@ export function App() {
   );
 }
 
+export function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
+
 export default App;
+
