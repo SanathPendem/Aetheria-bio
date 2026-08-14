@@ -16,9 +16,9 @@ export const FinalCTASection: React.FC<FinalCTAProps> = ({ onOpenPartnerModal })
             <Dna className="w-96 h-96 text-cyan-400" />
           </div>
 
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/80 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-mono shadow-lg shadow-cyan-500/10 backdrop-blur-md">
+          <div className="inline-flex items-center justify-center gap-2 text-cyan-400 text-xs sm:text-sm font-mono tracking-widest uppercase">
             <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-            <span className="uppercase tracking-widest">✦ [ QUANTUM BIOLOGY + AI PROTEIN DOCKING ]</span>
+            <span>QUANTUM BIOLOGY + AI PROTEIN DOCKING</span>
           </div>
 
           <h2 className="font-outfit text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight">

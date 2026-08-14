@@ -25,10 +25,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenPartnerModal }) 
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="lg:col-span-7 space-y-7 text-center lg:text-left"
           >
-            {/* Pill-Shaped Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/80 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-mono shadow-lg shadow-cyan-500/10 backdrop-blur-md">
+            {/* Eyebrow Tagline */}
+            <div className="inline-flex items-center justify-center lg:justify-start gap-2 text-cyan-400 text-xs sm:text-sm font-mono tracking-widest uppercase">
               <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-              <span className="uppercase tracking-widest">✦ [ QUANTUM BIOLOGY + AI PROTEIN DOCKING ]</span>
+              <span>QUANTUM BIOLOGY + AI PROTEIN DOCKING</span>
             </div>
 
             {/* Main Visionary Headline */}
